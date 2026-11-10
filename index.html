@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confidentiality and Privacy Controls: Practice Questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --ink:#1b2333; --muted:#566074;
+  --rule:#d7dde5; --accent:#1f5f7a; --accent-soft:#e3eef3; --key:#8a6a1f; --key-soft:#f6efdc;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12161d; --surface:#1a2029; --ink:#e4e8ee; --muted:#9aa5b5;
+    --rule:#2c3542; --accent:#7fb8d0; --accent-soft:#1d2f3a; --key:#d9b867; --key-soft:#2e2818;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:400 1.0625rem/1.65 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:46rem;margin:0 auto;padding:3rem 1.25rem 5rem}
+h1,h2{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;line-height:1.2}
+h1{font-size:clamp(1.9rem,4.5vw,2.6rem);font-weight:700;margin:3.5rem 0 1rem;
+  padding-top:2rem;border-top:3px solid var(--ink)}
+main>h1:first-child{margin-top:0;padding-top:0;border-top:0;font-size:clamp(2.1rem,5.5vw,3.1rem)}
+h2{font-size:1.45rem;font-weight:600;margin:0 0 .75rem;scroll-margin-top:1rem}
+p,li{max-width:42rem}
+a{color:var(--accent);text-underline-offset:.15em}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
+hr{border:0;border-top:1px solid var(--rule);margin:2.25rem 0}
+ul,ol{padding-left:1.4rem}
+/* answer options: the A-D list right after the case text */
+ul.options{list-style:none;padding:0}
+ul.options li{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:.45rem .8rem}
+main ul li{margin:.3rem 0}
+.diagram{background:var(--surface);border:1px solid var(--rule);border-radius:6px;
+  padding:1.25rem;margin:1.25rem 0;overflow-x:auto}
+.diagram pre.mermaid{margin:0;text-align:center;background:none}
+details{margin:1.25rem 0 0;border-left:4px solid var(--key);background:var(--key-soft);
+  border-radius:0 6px 6px 0;padding:.6rem 1.1rem}
+summary{cursor:pointer;font-weight:600;color:var(--key)}
+details[open] summary{margin-bottom:.5rem}
+p.answer{font-size:1.1rem}
+table{border-collapse:collapse;width:100%;margin:1rem 0;background:var(--surface)}
+.table-wrap{overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.5rem .75rem;text-align:left}
+th{background:var(--accent-soft)}
+td:nth-child(1),td:nth-child(2),th:nth-child(1),th:nth-child(2){text-align:center}
+blockquote{margin:1rem 0;padding:.5rem 1rem;border-left:4px solid var(--rule);color:var(--muted)}
+#contents+p, #contents~ul{font-size:.98rem}
+.top{display:inline-block;margin-top:1rem;font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<h1 id="confidentiality-and-privacy-controls-practice-questions">Confidentiality and Privacy Controls: Practice Questions</h1>
+<p>Practice questions for the <em>Confidentiality and Privacy Controls</em> lecture, in two parts: <strong>15 case-based questions</strong> and <strong>8 diagram-based questions</strong>. Each question describes a realistic business situation and asks you to pick the best control, principle, or explanation. Answers and short explanations are hidden under <strong>Show answer</strong> so you can test yourself first.</p>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After working through the questions, you should be able to:</p>
+<ol>
+<li>Identify and explain controls that protect the <strong>confidentiality</strong> of sensitive information.</li>
+<li>Identify and explain controls that protect the <strong>privacy</strong> of customers' personal information.</li>
+<li>Explain how the two basic types of <strong>encryption</strong> systems (symmetric and asymmetric) work.</li>
+</ol>
+<h2 id="how-to-use">How to Use</h2>
+<ol>
+<li>Read each case and choose an answer before expanding <strong>Show answer</strong>.</li>
+<li>Check your score with the answer key at the end of each part.</li>
+<li>The diagrams in Part 2 load with the page; give them a moment on a slow connection.</li>
+</ol>
+<h2 id="contents">Contents</h2>
+<p><strong><a href="#part-1-case-based-questions">Part 1: Case-Based Questions</a></strong></p>
+<ul>
+<li><a href="#case-1-two-kinds-of-sensitive-data">Case 1: Two kinds of sensitive data</a></li>
+<li><a href="#case-2-where-is-it-and-who-can-see-it">Case 2: Where is it and who can see it?</a></li>
+<li><a href="#case-3-the-policy-came-too-late">Case 3: The policy came too late</a></li>
+<li><a href="#case-4-the-pre-ticked-box">Case 4: The pre-ticked box</a></li>
+<li><a href="#case-5-too-much-information">Case 5: Too much information</a></li>
+<li><a href="#case-6-a-new-use-for-old-data">Case 6: A new use for old data</a></li>
+<li><a href="#case-7-fix-my-address">Case 7: "Fix my address"</a></li>
+<li><a href="#case-8-the-call-center-sees-too-much">Case 8: The call center sees too much</a></li>
+<li><a href="#case-9-who-leaked-the-blueprint">Case 9: Who leaked the blueprint?</a></li>
+<li><a href="#case-10-the-customer-list-goes-home">Case 10: The customer list goes home</a></li>
+<li><a href="#case-11-read-but-dont-forward">Case 11: Read, but don't forward</a></li>
+<li><a href="#case-12-one-key-fifty-suppliers">Case 12: One key, fifty suppliers</a></li>
+<li><a href="#case-13-buying-a-book-online">Case 13: Buying a book online</a></li>
+<li><a href="#case-14-encrypted-but-still-breached">Case 14: Encrypted, but still breached</a></li>
+<li><a href="#case-15-i-never-approved-that">Case 15: "I never approved that"</a></li>
+<li><a href="#answer-key-part-1">Answer Key: Part 1</a></li>
+</ul>
+<p><strong><a href="#part-2-diagram-based-questions">Part 2: Diagram-Based Questions</a></strong></p>
+<ul>
+<li><a href="#diagram-case-1-fill-in-the-encryption-steps">Diagram Case 1: Fill in the encryption steps</a></li>
+<li><a href="#diagram-case-2-which-keys-are-x-and-y">Diagram Case 2: Which keys are X and Y?</a></li>
+<li><a href="#diagram-case-3-one-key-per-supplier">Diagram Case 3: One key per supplier</a></li>
+<li><a href="#diagram-case-4-creating-a-digital-signature">Diagram Case 4: Creating a digital signature</a></li>
+<li><a href="#diagram-case-5-working-from-a-hotel">Diagram Case 5: Working from a hotel</a></li>
+<li><a href="#diagram-case-6-match-the-control-to-the-point">Diagram Case 6: Match the control to the point</a></li>
+<li><a href="#diagram-case-7-the-hashes-dont-match">Diagram Case 7: The hashes don't match</a></li>
+<li><a href="#diagram-case-8-opt-in-or-opt-out">Diagram Case 8: Opt-in or opt-out?</a></li>
+<li><a href="#answer-key-part-2">Answer Key: Part 2</a></li>
+</ul>
+<h1 id="part-1-case-based-questions">Part 1: Case-Based Questions</h1>
+<h2 id="case-1-two-kinds-of-sensitive-data">Case 1: Two kinds of sensitive data</h2>
+<p>Brightline Foods keeps two databases on the same server. One holds the secret recipes and supplier cost agreements for its best-selling sauces. The other holds the names, home addresses, and birthdays of 40,000 loyalty-card members. The IT manager says, "Both are just confidential data, so one policy covers both."</p>
+<p>Which statement best describes the two databases?</p>
+<ul class="options">
+<li>A. Both databases fall under privacy because they contain sensitive data.</li>
+<li>B. The recipe database is a confidentiality concern; the loyalty-card database is a privacy concern.</li>
+<li>C. The recipe database is a privacy concern; the loyalty-card database is a confidentiality concern.</li>
+<li>D. Neither needs protection unless it is transmitted over the internet.</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: B</strong></p>
+<p>Confidentiality protects the organization's own intellectual property, such as trade secrets, strategic plans, cost information, and legal documents. Privacy protects personal information about customers, employees, vendors, and business partners. The IT manager is wrong to treat them as one category, because privacy brings extra obligations (such as the Generally Accepted Privacy Principles) that do not apply to trade secrets. Option D is wrong because data must be protected both in storage and in transit.</p>
+</details>
+<hr />
+<h2 id="case-2-where-is-it-and-who-can-see-it">Case 2: Where is it and who can see it?</h2>
+<p>After a near-miss, the CFO of Harmon Medical Supply wants to "encrypt everything right away." The internal auditor says that step comes too early.</p>
+<p>What should the company do <strong>first</strong>?</p>
+<ul class="options">
+<li>A. Buy the strongest encryption software available.</li>
+<li>B. Identify where sensitive information is located, who has access to it, and classify it by its value to the organization.</li>
+<li>C. Run a security awareness training session.</li>
+<li>D. Install digital watermarks on all documents.</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: B</strong></p>
+<p>The first step in protecting confidentiality and privacy is to identify and classify the information. The company needs to know where sensitive data lives, who has access, and how valuable it is before it can decide which controls (encryption, access controls, masking, and so on) each kind of data needs. Encrypting "everything" without classification wastes resources and can miss data stored in unexpected places.</p>
+</details>
+<hr />
+<h2 id="case-3-the-policy-came-too-late">Case 3: The policy came too late</h2>
+<p>A fitness app asks new users for their weight, location, and daily step data during sign-up. The link to its privacy policy appears only on the confirmation screen, after the account has been created and the data has been saved.</p>
+<p>Which Generally Accepted Privacy Principle (GAPP) is most clearly violated?</p>
+<ul class="options">
+<li>A. Notice</li>
+<li>B. Security</li>
+<li>C. Quality</li>
+<li>D. Monitoring and enforcement</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: A. Notice</strong></p>
+<p>The Notice principle requires an organization to tell people about its privacy policies and practices <strong>before</strong> it collects their data. Showing the policy after the data is already captured defeats the purpose, because users could not make an informed decision about whether to share it.</p>
+</details>
+<hr />
+<h2 id="case-4-the-pre-ticked-box">Case 4: The pre-ticked box</h2>
+<p>An online clothing retailer's checkout page includes a box that is already checked: "Yes, share my information with our marketing partners." Customers must notice it and uncheck it to avoid having their data shared.</p>
+<p>Which GAPP principle is involved, and what approach is the retailer using?</p>
+<ul class="options">
+<li>A. Collection; an opt-in approach</li>
+<li>B. Choice and consent; an opt-out approach</li>
+<li>C. Choice and consent; an opt-in approach</li>
+<li>D. Access; an opt-out approach</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: B</strong></p>
+<p>Choice and consent is about giving people a real choice over how their information is used. In an <strong>opt-out</strong> approach, sharing happens by default unless the customer acts to stop it, which is what a pre-checked box does. In an <strong>opt-in</strong> approach, nothing is shared unless the customer actively agrees. Opt-in gives customers stronger privacy protection.</p>
+</details>
+<hr />
+<h2 id="case-5-too-much-information">Case 5: Too much information</h2>
+<p>A local gym's membership form asks for name, phone number, emergency contact, Social Security number, mother's maiden name, and annual income. The gym only needs to bill a monthly fee to a card.</p>
+<p>Which GAPP principle does this form violate most directly?</p>
+<ul class="options">
+<li>A. Use and retention</li>
+<li>B. Disclosure to third parties</li>
+<li>C. Collection</li>
+<li>D. Management</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: C. Collection</strong></p>
+<p>The Collection principle says an organization should collect only the information it needs for the purposes described in its privacy policy. A gym has no business need for a Social Security number, mother's maiden name, or income. Collecting extra data also increases risk: if the gym is breached, it exposes exactly the details identity thieves look for.</p>
+</details>
+<hr />
+<h2 id="case-6-a-new-use-for-old-data">Case 6: A new use for old data</h2>
+<p>Coastal Pharmacy collected customer phone numbers so it could text prescription-ready alerts. Two years later, the pharmacy starts selling the list to a vitamin company and keeps the numbers of customers who have not visited in five years.</p>
+<p>Which GAPP principle is most directly violated?</p>
+<ul class="options">
+<li>A. Use and retention</li>
+<li>B. Notice</li>
+<li>C. Quality</li>
+<li>D. Security</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: A. Use and retention</strong></p>
+<p>Use and retention requires that personal information be used only for the business purpose stated when it was collected, and kept only as long as needed for that purpose. Selling numbers collected for prescription alerts is a new, unstated use, and holding data on long-inactive customers goes beyond any reasonable retention need. (Selling the list also raises the <strong>Disclosure to third parties</strong> principle.)</p>
+</details>
+<hr />
+<h2 id="case-7-fix-my-address">Case 7: "Fix my address"</h2>
+<p>A customer notices that her bank's online profile lists an old address and a misspelled name. When she calls to fix it and asks to see what else the bank holds on her, the representative says, "Customers can't view or edit internal records."</p>
+<p>Which GAPP principle is the bank failing to meet?</p>
+<ul class="options">
+<li>A. Collection</li>
+<li>B. Access</li>
+<li>C. Compliance</li>
+<li>D. Choice and consent</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: B. Access</strong></p>
+<p>The Access principle says customers should be able to review, correct, and, where appropriate, delete the information an organization collects about them. Letting customers correct their own records also supports the <strong>Quality</strong> principle, because it keeps personal data accurate.</p>
+</details>
+<hr />
+<h2 id="case-8-the-call-center-sees-too-much">Case 8: The call center sees too much</h2>
+<p>At an insurance company's call center, representatives verify callers by asking for the last four digits of their Social Security number. However, the screen displays every caller's full nine-digit number, birthdate, and full bank account number.</p>
+<p>Which control would best reduce the privacy risk while still letting representatives verify callers?</p>
+<ul class="options">
+<li>A. Digital watermarking</li>
+<li>B. Symmetric encryption of the call recordings</li>
+<li>C. Data masking</li>
+<li>D. A virtual private network</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: C. Data masking</strong></p>
+<p>Data masking replaces sensitive personal data with characters such as <code>XXX-XX-1234</code>, so users see only what they need for their job. Representatives can still verify the last four digits, but they cannot copy the full number. Data masking is listed in the lecture as a <strong>privacy</strong> control. Encryption (B) protects data in storage or transit, but once data is decrypted and displayed on screen, masking is what limits exposure.</p>
+</details>
+<hr />
+<h2 id="case-9-who-leaked-the-blueprint">Case 9: Who leaked the blueprint?</h2>
+<p>An engineering firm sends draft blueprints of a new product to five outside contractors. A month later, one blueprint appears on a competitor's website. Management wants to find out which contractor leaked it and to deter future leaks.</p>
+<p>Which control would have helped most?</p>
+<ul class="options">
+<li>A. Data masking</li>
+<li>B. Digital watermarks</li>
+<li>C. Opt-in consent</li>
+<li>D. Hashing the file names</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: B. Digital watermarks</strong></p>
+<p>A digital watermark is an embedded code that identifies a document as the organization's property, and it can be made unique to each recipient. If each contractor's copy carried its own watermark, the leaked copy would point back to its source. Watermarks are a <strong>detective</strong> control for confidentiality: they do not stop the leak, but they identify where it came from and discourage it.</p>
+</details>
+<hr />
+<h2 id="case-10-the-customer-list-goes-home">Case 10: The customer list goes home</h2>
+<p>A departing salesperson at a software company tries to email the full customer contact list, which includes pricing terms, to his personal Gmail account the day before he quits.</p>
+<p>Which control is specifically designed to catch and block this kind of outgoing transmission?</p>
+<ul class="options">
+<li>A. Data loss prevention (DLP) software</li>
+<li>B. A digital certificate</li>
+<li>C. Key escrow</li>
+<li>D. Data masking</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: A. Data loss prevention (DLP)</strong></p>
+<p>Controlling outgoing information is a key confidentiality control. DLP software scans outgoing email, instant messages, and other transmissions for keywords or patterns that indicate protected data, and blocks or flags them. It is a <strong>preventive</strong> control, while a digital watermark would be detective. Neither key escrow nor digital certificates monitor outgoing messages.</p>
+</details>
+<hr />
+<h2 id="case-11-read-but-dont-forward">Case 11: Read, but don't forward</h2>
+<p>A company's board of directors receives confidential merger documents electronically. The chair wants directors to be able to read the files but not print, copy, or forward them, and wants access to expire after the vote.</p>
+<p>Which control fits best?</p>
+<ul class="options">
+<li>A. Spam filtering</li>
+<li>B. Information rights management (IRM)</li>
+<li>C. Data masking</li>
+<li>D. Asymmetric encryption alone</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: B. Information rights management (IRM)</strong></p>
+<p>IRM software controls what authorized users can do with a document after they open it: whether they can read, copy, print, forward, or download it, and for how long. Encryption alone (D) controls who can open the file, but once it is decrypted, the reader could copy or forward its contents. IRM adds the post-access restrictions the chair wants.</p>
+</details>
+<hr />
+<h2 id="case-12-one-key-fifty-suppliers">Case 12: One key, fifty suppliers</h2>
+<p>Northgate Manufacturing uses symmetric encryption for purchase orders. To keep things simple, it gives the <strong>same</strong> secret key to all 50 of its suppliers.</p>
+<p>What is the main weakness of this arrangement?</p>
+<ul class="options">
+<li>A. Symmetric encryption is too slow for purchase orders.</li>
+<li>B. Any supplier holding the key could decrypt messages meant for the other 49 suppliers, and the key had to be distributed securely 50 times.</li>
+<li>C. Symmetric encryption cannot protect data in transit.</li>
+<li>D. Suppliers would need Northgate's private key to read messages.</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: B</strong></p>
+<p>Symmetric encryption uses <strong>one key</strong> to both encrypt and decrypt, so everyone who has the key can read everything protected by it. With symmetric systems, each trading partner should get its own different key, and each key must be shared over a secure channel. A common way to avoid this burden is asymmetric encryption, where one public key can be given to all trading partners. Option D is wrong because symmetric systems do not use public and private key pairs.</p>
+</details>
+<hr />
+<h2 id="case-13-buying-a-book-online">Case 13: Buying a book online</h2>
+<p>Maya buys a textbook from an online bookstore and enters her credit card number at checkout. The bookstore uses asymmetric encryption.</p>
+<p>Which keys are used to protect her credit card information?</p>
+<ul class="options">
+<li>A. Maya encrypts with her own private key; the bookstore decrypts with Maya's public key.</li>
+<li>B. Maya's browser encrypts with the bookstore's public key; the bookstore decrypts with its own private key.</li>
+<li>C. Maya's browser encrypts with the bookstore's private key; the bookstore decrypts with its public key.</li>
+<li>D. Both sides use the same shared secret key.</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: B</strong></p>
+<p>In asymmetric encryption, anything encrypted with the recipient's <strong>public key</strong> can be decrypted only with the matching <strong>private key</strong>. The bookstore's public key is available to everyone, so any customer can use it, but only the bookstore, which holds the private key, can read the card number. Option C is impossible because the bookstore would never give out its private key. Option D describes symmetric encryption.</p>
+</details>
+<hr />
+<h2 id="case-14-encrypted-but-still-breached">Case 14: Encrypted, but still breached</h2>
+<p>A regional retailer encrypts all stored credit card numbers using a strong, modern algorithm with a long key. Hackers break into the database server and decrypt millions of card numbers anyway. Investigators find that the decryption key was stored in a file on that same server.</p>
+<p>What was the main cause of the breach?</p>
+<ul class="options">
+<li>A. The key length was too short.</li>
+<li>B. The algorithm was too weak.</li>
+<li>C. Poor key management: the key was not stored securely, apart from the data it protects.</li>
+<li>D. Symmetric encryption cannot protect stored data.</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: C</strong></p>
+<p>Encryption strength depends on three factors: key length, the algorithm, and the <strong>policies for managing keys</strong>. A long key and a strong algorithm are worthless if the key sits next to the data, because an attacker who reaches the server gets both. This is a common reason hackers obtain card data despite encryption. Keys should be stored securely and separately from the data they protect.</p>
+</details>
+<hr />
+<h2 id="case-15-i-never-approved-that">Case 15: "I never approved that"</h2>
+<p>The CFO of Summit Logistics emails the bank to approve a $250,000 wire transfer. After the deal goes badly, the CFO claims she never sent the approval. The email had been digitally signed.</p>
+<p>How does the digital signature resolve the dispute?</p>
+<ul class="options">
+<li>A. The bank decrypts the signature with the CFO's private key, proving the email was not changed.</li>
+<li>B. The CFO created the signature by encrypting a hash of the email with her private key; the bank verifies it with her public key. Because only she holds her private key, she cannot credibly deny sending it.</li>
+<li>C. The signature was created with the bank's public key, so only the bank could have sent it.</li>
+<li>D. Digital signatures only show that an email was encrypted, not who sent it.</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: B</strong></p>
+<p>A digital signature is created by hashing a document and encrypting that hash with the signer's <strong>private key</strong>. Anyone can decrypt it with the signer's <strong>public key</strong> and compare it to a fresh hash of the document. A match proves two things: the document has not been altered (any change produces a different hash), and it came from the holder of that private key. This provides <strong>nonrepudiation</strong>, meaning the sender cannot deny having sent it. Digital signatures are one of the capabilities asymmetric encryption offers that symmetric encryption does not.</p>
+</details>
+<hr />
+<h2 id="answer-key-part-1">Answer Key: Part 1</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">Case</th>
+<th style="text-align: center;">Answer</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">B</td>
+<td>Confidentiality vs. privacy</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">B</td>
+<td>Identify and classify information</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">A</td>
+<td>GAPP: Notice</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">B</td>
+<td>GAPP: Choice and consent (opt-out)</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">C</td>
+<td>GAPP: Collection</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">A</td>
+<td>GAPP: Use and retention</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">B</td>
+<td>GAPP: Access</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">C</td>
+<td>Data masking</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">B</td>
+<td>Digital watermarks</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">A</td>
+<td>Data loss prevention</td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">B</td>
+<td>Information rights management</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">B</td>
+<td>Symmetric encryption key sharing</td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">B</td>
+<td>Asymmetric encryption (public/private keys)</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">C</td>
+<td>Encryption strength and key management</td>
+</tr>
+<tr>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">B</td>
+<td>Digital signatures and nonrepudiation</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="part-2-diagram-based-questions">Part 2: Diagram-Based Questions</h1>
+<h2 id="diagram-case-1-fill-in-the-encryption-steps">Diagram Case 1: Fill in the encryption steps</h2>
+<p>An accounts payable clerk at Redwood Distributors sends an invoice to a customer. The diagram shows what happens to the invoice, but two steps are labeled <strong>X</strong> and <strong>Y</strong>.</p>
+<div class="diagram"><pre class="mermaid">
+flowchart LR
+    P1[&quot;Plaintext&lt;br/&gt;Invoice 4471: 12,500 dollars&quot;] --&gt; X[&quot;Step X&quot;]
+    K1([&quot;Key + algorithm&quot;]) --&gt; X
+    X --&gt; C[&quot;Unreadable text&lt;br/&gt;8fkQ2zL9vT...&quot;]
+    C --&gt; Y[&quot;Step Y&quot;]
+    K2([&quot;Key + algorithm&quot;]) --&gt; Y
+    Y --&gt; P2[&quot;Plaintext&lt;br/&gt;Invoice 4471: 12,500 dollars&quot;]
+</pre></div>
+
+<p>Which labels correctly complete the diagram?</p>
+<ul class="options">
+<li>A. X = Hashing, Y = Decryption</li>
+<li>B. X = Encryption performed by the sender, Y = Decryption performed by the receiver</li>
+<li>C. X = Decryption performed by the sender, Y = Encryption performed by the receiver</li>
+<li>D. X = Data masking, Y = Data unmasking</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: B</strong></p>
+<p>Encryption takes <strong>plaintext</strong> and, using a key and an algorithm, turns it into unreadable <strong>ciphertext</strong>. This is done by the sender. Decryption uses a key to reverse the process and make the information readable again. This is done by the receiver. Hashing (A) is one-way, so the original invoice could never be recovered from it. Data masking (D) hides characters on a screen; it is not a reversible transformation for sending messages.</p>
+</details>
+<hr />
+<h2 id="diagram-case-2-which-keys-are-x-and-y">Diagram Case 2: Which keys are X and Y?</h2>
+<p>Valley Hospital sends lab results to an outside clinic. The two organizations use asymmetric encryption.</p>
+<div class="diagram"><pre class="mermaid">
+sequenceDiagram
+    participant H as Valley Hospital (sender)
+    participant C as Outside Clinic (receiver)
+    Note over H: Encrypts lab results with Key X
+    H-&gt;&gt;C: Ciphertext sent over the internet
+    Note over C: Decrypts lab results with Key Y
+</pre></div>
+
+<p>Which keys are X and Y?</p>
+<ul class="options">
+<li>A. X = Hospital's private key, Y = Hospital's public key</li>
+<li>B. X = Clinic's private key, Y = Clinic's public key</li>
+<li>C. X = Clinic's public key, Y = Clinic's private key</li>
+<li>D. X and Y are the same shared secret key</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: C</strong></p>
+<p>To keep a message confidential with asymmetric encryption, the sender encrypts it with the <strong>receiver's public key</strong>. Only the receiver's matching <strong>private key</strong> can decrypt it. Anyone can have the clinic's public key, but only the clinic holds its private key, so only the clinic can read the lab results. Option A would let anyone with the hospital's public key read the message, so it gives no confidentiality. Option D describes symmetric encryption.</p>
+</details>
+<hr />
+<h2 id="diagram-case-3-one-key-per-supplier">Diagram Case 3: One key per supplier</h2>
+<p>Northgate Manufacturing uses symmetric encryption and gives each supplier its own key, as shown.</p>
+<div class="diagram"><pre class="mermaid">
+flowchart LR
+    N[&quot;Northgate Manufacturing&quot;]
+    N ---|Key 1| S1[&quot;Supplier A&quot;]
+    N ---|Key 2| S2[&quot;Supplier B&quot;]
+    N ---|Key 3| S3[&quot;Supplier C&quot;]
+    N ---|Key 4| S4[&quot;Supplier D&quot;]
+</pre></div>
+
+<p>Which statement about this setup is correct?</p>
+<ul class="options">
+<li>A. Each of the four keys must be delivered to its supplier over a secure channel; with asymmetric encryption, Northgate could instead publish one public key that all four suppliers use.</li>
+<li>B. Supplier A can read messages sent to Supplier B because both use symmetric encryption.</li>
+<li>C. Northgate should replace Keys 1 to 4 with a single key for all suppliers to make it more secure.</li>
+<li>D. Each supplier needs Northgate's private key to read its messages.</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: A</strong></p>
+<p>Symmetric encryption uses one key to both encrypt and decrypt, so both parties must know it, and it has to be shared securely. Because one shared key would let every supplier read every other supplier's messages, each trading partner needs its own key, which is what the diagram shows. That means one more key to create, deliver, and protect for every new partner. Asymmetric encryption avoids this: one <strong>public key</strong> can be used by all trading partners, while Northgate keeps the <strong>private key</strong> secret. Option C would reintroduce the problem, and option D would give away the one key that must stay secret.</p>
+</details>
+<hr />
+<h2 id="diagram-case-4-creating-a-digital-signature">Diagram Case 4: Creating a digital signature</h2>
+<p>Summit Logistics digitally signs every purchase order before sending it to a vendor.</p>
+<div class="diagram"><pre class="mermaid">
+flowchart LR
+    D[&quot;Purchase order&quot;] --&gt; H[&quot;Hash function&quot;]
+    H --&gt; HV[&quot;Hash of the purchase order&quot;]
+    HV --&gt; E[&quot;Encrypt with Key Z&quot;]
+    E --&gt; DS[&quot;Digital signature&quot;]
+    D --&gt; S[&quot;Send purchase order plus digital signature&quot;]
+    DS --&gt; S
+</pre></div>
+
+<p>What is <strong>Key Z</strong>, and which key will the vendor use to verify the signature?</p>
+<ul class="options">
+<li>A. Key Z = Vendor's public key; the vendor verifies with its own private key.</li>
+<li>B. Key Z = A shared symmetric key; the vendor verifies with the same key.</li>
+<li>C. Key Z = Summit's public key; the vendor verifies with Summit's private key.</li>
+<li>D. Key Z = Summit's private key; the vendor verifies with Summit's public key.</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: D</strong></p>
+<p>A digital signature is a hash of the document encrypted with the <strong>signer's private key</strong>. The vendor decrypts the signature with Summit's <strong>public key</strong> and compares it to a fresh hash of the purchase order. Because only Summit holds its private key, a valid signature proves Summit sent the order, which provides <strong>nonrepudiation</strong>. Option C would require the vendor to have Summit's private key, which must never be shared.</p>
+</details>
+<hr />
+<h2 id="diagram-case-5-working-from-a-hotel">Diagram Case 5: Working from a hotel</h2>
+<p>An accountant at Pine Street CPAs connects to the firm's accounting system from a hotel lobby.</p>
+<div class="diagram"><pre class="mermaid">
+flowchart LR
+    L[&quot;Accountant laptop&lt;br/&gt;with VPN software&quot;] == &quot;Encrypted tunnel&quot; ==&gt; I((&quot;Hotel Wi-Fi and&lt;br/&gt;public internet&quot;))
+    I == &quot;Encrypted tunnel&quot; ==&gt; G[&quot;Firm VPN gateway&quot;]
+    G --&gt; A[&quot;Internal accounting system&quot;]
+</pre></div>
+
+<p>An attacker on the same hotel Wi-Fi captures all traffic between the laptop and the firm. What will the attacker see?</p>
+<ul class="options">
+<li>A. The client files in readable form, because hotel Wi-Fi is public.</li>
+<li>B. Nothing at all, because a VPN prevents any traffic from crossing the internet.</li>
+<li>C. Ciphertext only, because the VPN encrypts the data before it leaves the laptop and the firm's gateway decrypts it.</li>
+<li>D. Readable data, because a VPN only protects data in storage.</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: C</strong></p>
+<p>A virtual private network securely sends encrypted data between a sender and a receiver that hold the right encryption and decryption keys. The data still travels across the public internet (so B is wrong), but it is encrypted in transit, so the attacker captures only unreadable ciphertext. It is decrypted at the firm's VPN gateway. Option D is wrong because protecting data <strong>in transit</strong> is exactly what a VPN does.</p>
+</details>
+<hr />
+<h2 id="diagram-case-6-match-the-control-to-the-point">Diagram Case 6: Match the control to the point</h2>
+<p>The diagram shows how customer data moves through Brightline Insurance. Four control points are marked A to D.</p>
+<div class="diagram"><pre class="mermaid">
+flowchart LR
+    CU[&quot;Customer&quot;] --&gt; A[&quot;Point A&lt;br/&gt;Online sign-up form&quot;]
+    A --&gt; B[&quot;Point B&lt;br/&gt;Customer database&quot;]
+    B --&gt; C[&quot;Point C&lt;br/&gt;Call center screen&quot;]
+    B --&gt; D[&quot;Point D&lt;br/&gt;Outgoing email gateway&quot;]
+    D --&gt; X((&quot;Internet&quot;))
+</pre></div>
+
+<p>Which set of controls best matches each point?</p>
+<ul class="options">
+<li>A. A = Privacy notice and consent, B = Encryption of stored data, C = Data masking, D = Data loss prevention</li>
+<li>B. A = Data loss prevention, B = Privacy notice, C = Encryption, D = Data masking</li>
+<li>C. A = Data masking, B = Digital watermark, C = Privacy notice, D = Encryption</li>
+<li>D. A = Encryption, B = Data loss prevention, C = Privacy notice, D = Data masking</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: A</strong></p>
+<ul>
+<li><strong>Point A:</strong> The Notice and Choice and consent principles require telling customers about privacy practices and getting their consent <strong>before</strong> collecting data.</li>
+<li><strong>Point B:</strong> Encryption protects the data while it is in storage.</li>
+<li><strong>Point C:</strong> Data masking shows call center staff only what they need, such as the last four digits of an ID number.</li>
+<li><strong>Point D:</strong> Data loss prevention software scans outgoing messages and blocks sensitive data from leaving the organization.</li>
+</ul>
+</details>
+<hr />
+<h2 id="diagram-case-7-the-hashes-dont-match">Diagram Case 7: The hashes don't match</h2>
+<p>A vendor receives a signed contract from Summit Logistics and checks the signature.</p>
+<div class="diagram"><pre class="mermaid">
+flowchart TD
+    R[&quot;Contract as received&quot;] --&gt; H1[&quot;Hash function&quot;]
+    H1 --&gt; V1[&quot;Hash A: 7d2f...91&quot;]
+    S[&quot;Digital signature as received&quot;] --&gt; K[&quot;Decrypt with Summit public key&quot;]
+    K --&gt; V2[&quot;Hash B: 7d2f...4c&quot;]
+    V1 --&gt; CMP{&quot;Compare Hash A&lt;br/&gt;and Hash B&quot;}
+    V2 --&gt; CMP
+    CMP --&gt; RES[&quot;Result: hashes do NOT match&quot;]
+</pre></div>
+
+<p>What should the vendor conclude?</p>
+<ul class="options">
+<li>A. The contract is valid; small differences in a hash do not matter.</li>
+<li>B. The contract was encrypted with symmetric encryption by mistake.</li>
+<li>C. Summit's public key has been stolen.</li>
+<li>D. The contract was changed after it was signed, or the signature was not created with Summit's private key, so it should not be accepted.</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: D</strong></p>
+<p>Changing even one character in a document produces a completely different <strong>hash</strong>. If the hash the vendor calculates (Hash A) does not match the hash recovered from the signature (Hash B), either the contract was altered in transit or the signature did not come from Summit's private key. Either way, the vendor cannot trust it. Option C is not a concern, since a public key is meant to be public.</p>
+</details>
+<hr />
+<h2 id="diagram-case-8-opt-in-or-opt-out">Diagram Case 8: Opt-in or opt-out?</h2>
+<p>The diagram shows how an online retailer decides whether to share a customer's data with marketing partners.</p>
+<div class="diagram"><pre class="mermaid">
+flowchart TD
+    S[&quot;Customer completes checkout&quot;] --&gt; Q{&quot;Did the customer tick&lt;br/&gt;Share my data with partners?&quot;}
+    Q -- Yes --&gt; Y[&quot;Data shared with partners&quot;]
+    Q -- No --&gt; N[&quot;Data NOT shared&quot;]
+</pre></div>
+
+<p>The box starts <strong>unticked</strong>. Which approach does this diagram show, and which privacy principle does it relate to?</p>
+<ul class="options">
+<li>A. Opt-out; Collection</li>
+<li>B. Opt-out; Choice and consent</li>
+<li>C. Opt-in; Choice and consent</li>
+<li>D. Opt-in; Use and retention</li>
+</ul>
+<details>
+<summary>Show answer</summary>
+<p class="answer"><strong>Answer: C</strong></p>
+<p>Data is shared only if the customer takes action to agree, which is an <strong>opt-in</strong> approach. If the box started ticked, or if data were shared unless the customer objected, it would be <strong>opt-out</strong>. Both are part of the <strong>Choice and consent</strong> principle. Opt-in gives customers stronger privacy protection, because doing nothing keeps their data private.</p>
+</details>
+<hr />
+<h2 id="answer-key-part-2">Answer Key: Part 2</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th style="text-align: center;">Case</th>
+<th style="text-align: center;">Answer</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">D1</td>
+<td style="text-align: center;">B</td>
+<td>Encryption and decryption steps</td>
+</tr>
+<tr>
+<td style="text-align: center;">D2</td>
+<td style="text-align: center;">C</td>
+<td>Asymmetric encryption (public/private keys)</td>
+</tr>
+<tr>
+<td style="text-align: center;">D3</td>
+<td style="text-align: center;">A</td>
+<td>Symmetric key distribution</td>
+</tr>
+<tr>
+<td style="text-align: center;">D4</td>
+<td style="text-align: center;">D</td>
+<td>Creating a digital signature</td>
+</tr>
+<tr>
+<td style="text-align: center;">D5</td>
+<td style="text-align: center;">C</td>
+<td>Virtual private network</td>
+</tr>
+<tr>
+<td style="text-align: center;">D6</td>
+<td style="text-align: center;">A</td>
+<td>Matching controls to the data flow</td>
+</tr>
+<tr>
+<td style="text-align: center;">D7</td>
+<td style="text-align: center;">D</td>
+<td>Hash comparison and integrity</td>
+</tr>
+<tr>
+<td style="text-align: center;">D8</td>
+<td style="text-align: center;">C</td>
+<td>Opt-in vs. opt-out</td>
+</tr>
+</tbody>
+</table></div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+  var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({startOnLoad:true, theme: dark ? 'dark' : 'neutral', securityLevel:'strict'});
+</script>
+</body>
+</html>
